@@ -66,7 +66,7 @@ const UserRegistration = () => {
     };
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/users/`, formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}api/users/`, formData);
       if (response.status === 201) {
         console.log("Registration successful:", response.data.message);
         setFormData({
