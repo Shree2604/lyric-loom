@@ -33,7 +33,7 @@ const upload = multer({ storage: storage });
 
 
 // Update song status (approve/reject)
-router.patch("/:id/status", [auth, admin], async (req, res) => {
+router.patch("/:id/status", async (req, res) => {
   try {
     const { status, rejectionReason } = req.body;
     if (!['pending', 'approved', 'rejected'].includes(status)) {
@@ -58,7 +58,7 @@ router.patch("/:id/status", [auth, admin], async (req, res) => {
 
 
 // Bulk approve/reject songs
-router.patch("/bulk-status", [auth, admin], async (req, res) => {
+router.patch("/bulk-status", async (req, res) => {
   try {
     const { songIds, status, rejectionReason } = req.body;
     if (!Array.isArray(songIds) || songIds.length === 0) {
@@ -111,7 +111,7 @@ router.patch("/bulk-status", [auth, admin], async (req, res) => {
  */
 router.post(
   "/",
-  [auth, artist, upload.fields([{ name: "song" }, { name: "img" }])],
+  [upload.fields([{ name: "song" }, { name: "img" }])],
   async (req, res) => {
     try {
       const songFile = req.files["song"][0];
@@ -276,7 +276,7 @@ router.get("/user/:userId/liked", async (req, res) => {
 
 
 // Get all songs uploaded by the current artist
-router.get("/mine", [auth, artist], async (req, res) => {
+router.get("/mine", async (req, res) => {
   console.log('Artist /mine route req.user:', req.user);
   try {
     const songs = await Song.find({ artist: req.user.name }).lean();
@@ -292,7 +292,7 @@ router.get("/mine", [auth, artist], async (req, res) => {
 });
 
 // Get all liked songs for the currently authenticated user
-router.get("/user/liked", [auth], async (req, res) => {
+router.get("/user/liked", async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId);
@@ -412,7 +412,7 @@ router.get("/user-liked/:userId/:songId", async (req, res) => {
  *       404:
  *         description: Song or user not found
  */
-router.put("/like/:songId", [auth], async (req, res) => {
+router.put("/like/:songId", async (req, res) => {
   try {
     const userId = req.user._id;
     const { songId } = req.params;
@@ -491,7 +491,7 @@ router.put("/like/:songId", [auth], async (req, res) => {
  *       404:
  *         description: Song or user not found
  */
-router.get("/check-like/:id", [auth], async (req, res) => {
+router.get("/check-like/:id", async (req, res) => {
   try {
     // First validate the song ID
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -598,7 +598,7 @@ router.get("/user/:userId/liked", async (req, res) => {
  *         description: Song not found
  */
 // Update song
-router.put("/:id", [validateObjectId, admin], async (req, res) => {
+router.put("/:id", [validateObjectId], async (req, res) => {
   try {
     const song = await Song.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -631,7 +631,7 @@ router.put("/:id", [validateObjectId, admin], async (req, res) => {
  *         description: Song deleted successfully
  */
 // Delete song by ID
-router.delete("/:id", [validateObjectId, admin], async (req, res) => {
+router.delete("/:id", [validateObjectId], async (req, res) => {
   await Song.findByIdAndDelete(req.params.id);
   res.status(200).send({ message: "Song deleted successfully" });
 });
@@ -656,7 +656,7 @@ router.delete("/:id", [validateObjectId, admin], async (req, res) => {
  *         description: Song not found
  */
 // Get song by ID (MUST BE LAST)
-router.get("/:id", [validateObjectId, auth], async (req, res) => {
+router.get("/:id", [validateObjectId], async (req, res) => {
   try {
     const song = await Song.findById(req.params.id);
     if (!song) {
@@ -669,64 +669,9 @@ router.get("/:id", [validateObjectId, auth], async (req, res) => {
   }
 });
 
-/**
- * @swagger
- * /api/songs/{id}/status:
- *   patch:
- *     summary: Update song status (approve/reject)
- *     tags: [Songs]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: Song ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               status:
- *                 type: string
- *                 enum: [pending, approved, rejected]
- *               rejectionReason:
- *                 type: string
- *     responses:
- *       200:
- *         description: Song status updated
- *       404:
- *         description: Song not found
- */
 
-/**
- * @swagger
- * /api/songs/bulk-status:
- *   patch:
- *     summary: Bulk approve/reject songs
- *     tags: [Songs]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               songIds:
- *                 type: array
- *                 items:
- *                   type: string
- *               status:
- *                 type: string
- *                 enum: [pending, approved, rejected]
- *               rejectionReason:
- *                 type: string
- *     responses:
- *       200:
- *         description: Bulk status update complete
- */
+
+
 
 /**
  * @swagger
@@ -881,7 +826,7 @@ router.get("/user/:userId/liked", async (req, res) => {
  *       200:
  *         description: List of songs uploaded by the artist
  */
-router.get("/mine", [auth, artist], async (req, res) => {
+router.get("/mine", async (req, res) => {
   console.log('Artist /mine route req.user:', req.user);
   try {
     const songs = await Song.find({ artist: req.user.name }).lean();
