@@ -11,14 +11,17 @@ const AdminApiKeyUsage = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Fetch all partners for dropdown
-    axios.get("/api/partners")
-      .then(res => setPartners(res.data.data || []))
-      .catch(err => {
+    const fetchPartners = async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/partners`);
+        setPartners(res.data.data || []);
+      } catch (err) {
         console.error("Error fetching partners:", err);
-        setPartners([]);
         setError("Failed to load partners.");
-      });
+      }
+    };
+
+    fetchPartners();
   }, []);
 
   const fetchUsage = async (partnerId) => {
@@ -39,27 +42,36 @@ const AdminApiKeyUsage = () => {
   const handleSelect = (e) => {
     const partnerId = e.target.value;
     setSelectedPartner(partnerId);
-    if (partnerId) fetchUsage(partnerId);
-    else setUsage([]);
+    if (partnerId) {
+      fetchUsage(partnerId);
+    } else {
+      setUsage([]);
+    }
   };
 
   return (
     <div className="admin-api-key-usage-container">
       <div className="admin-api-key-usage-header">
         <h2>API Key Usage Dashboard</h2>
-        <div style={{ marginBottom: "1.5rem" }}>
+        <div className="partner-select-container">
           <label htmlFor="partner-select">Select Partner: </label>
           <select id="partner-select" value={selectedPartner} onChange={handleSelect}>
             <option value="">-- Select Partner --</option>
-            {partners?.map((p) => (
-              <option key={p._id} value={p._id}>{p.name}</option>
-            ))}
+            {partners.length > 0 ? (
+              partners.map((partner) => (
+                <option key={partner._id} value={partner._id}>
+                  {partner.name}
+                </option>
+              ))
+            ) : (
+              <option disabled>No partners available</option>
+            )}
           </select>
         </div>
       </div>
 
       {loading ? (
-        <div>Loading usage logs...</div>
+        <div className="loading-message">Loading usage logs...</div>
       ) : error ? (
         <div className="error-message">{error}</div>
       ) : usage.length > 0 ? (
@@ -82,7 +94,7 @@ const AdminApiKeyUsage = () => {
           </tbody>
         </table>
       ) : selectedPartner ? (
-        <div>No usage logs for this partner.</div>
+        <div className="no-logs-message">No usage logs for this partner.</div>
       ) : null}
     </div>
   );
