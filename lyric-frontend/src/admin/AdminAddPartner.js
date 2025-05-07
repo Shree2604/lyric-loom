@@ -16,7 +16,7 @@ const AdminAddPartner = () => {
     setSuccess("");
     setApiKey("");
     try {
-      const res = await axios.post("${process.env.REACT_APP_API_BASE_URL}/api/partners", { name: partnerName });
+      const res = await axios.post('${process.env.REACT_APP_API_BASE_URL}/api/partners', { name: partnerName });
       setApiKey(res.data.apiKey);
       setSuccess("Partner added successfully!");
     } catch (err) {
