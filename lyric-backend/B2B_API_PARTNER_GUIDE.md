@@ -8,7 +8,7 @@ Welcome, business partners! This guide explains how to securely and efficiently 
 - Every B2B request must include your API key in the `x-api-key` header.
 - Example:
   ```sh
-  curl -H "x-api-key: <YOUR_API_KEY>" http://localhost:5000/api/songs/b2b/all
+  curl -H "x-api-key: <YOUR_API_KEY>" https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs/songs/b2b/all
   ```
 - If your key is missing or invalid, you'll get a 401 Unauthorized error.
 
@@ -16,7 +16,7 @@ Welcome, business partners! This guide explains how to securely and efficiently 
 
 ## 📘 Example: Fetch All Songs
 ```sh
-curl -H "x-api-key: <YOUR_API_KEY>" http://localhost:5000/api/songs/b2b/all
+curl -H "x-api-key: <YOUR_API_KEY>" https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs/songs/b2b/all
 ```
 **Response:**
 ```json

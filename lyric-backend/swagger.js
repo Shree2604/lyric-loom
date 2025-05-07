@@ -10,7 +10,7 @@ const options = {
       description: 'API documentation for Lyric project (B2B & B2C, REST, ready for Swagger UI)'
     },
     servers: [
-      { url: 'http://localhost:5000', description: 'Local server' }
+      { url: 'https://popular-mite-shree2604-bfb782a1.koyeb.app/', description: 'Production server' }
     ],
     components: {}, // Explicitly remove securitySchemes
   },

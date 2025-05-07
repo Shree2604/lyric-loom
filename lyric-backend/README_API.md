@@ -20,7 +20,7 @@ Welcome to the Lyric Project API! This API is designed for both B2B (external pa
    node Server.js
    ```
 3. **Access API documentation:**
-   - Open [http://localhost:5000/api-docs](http://localhost:5000/api-docs) in your browser for Swagger UI (interactive docs).
+   - Open [https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs) in your browser for Swagger UI (interactive docs).
 
 ---
 
@@ -29,7 +29,7 @@ Welcome to the Lyric Project API! This API is designed for both B2B (external pa
 - Obtain a token by logging in via `/api/login`.
 - Example:
   ```sh
-  curl -H "x-auth-token: <TOKEN>" http://localhost:5000/api/users
+  curl -H "x-auth-token: <TOKEN>" https://popular-mite-shree2604-bfb782a1.koyeb.app/api/users
   ```
 
 ---
@@ -67,17 +67,17 @@ Welcome to the Lyric Project API! This API is designed for both B2B (external pa
 
 ### Register User
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"name":"Test","email":"test@email.com","password":"pass"}' http://localhost:5000/api/users
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Test","email":"test@email.com","password":"pass"}' https://popular-mite-shree2604-bfb782a1.koyeb.app/api/users
 ```
 
 ### Get All Users (Authenticated)
 ```sh
-curl -H "x-auth-token: <TOKEN>" http://localhost:5000/api/users
+curl -H "x-auth-token: <TOKEN>" https://popular-mite-shree2604-bfb782a1.koyeb.app/api/users
 ```
 
 ### Submit Artist Bio
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"artistId":"abc123","bio":"My new bio"}' http://localhost:5000/api/bio
+curl -X POST -H "Content-Type: application/json" -d '{"artistId":"abc123","bio":"My new bio"}' https://popular-mite-shree2604-bfb782a1.koyeb.app/api/bio
 ```
 
 ---
@@ -96,7 +96,7 @@ axios.get('/api/users', { headers: { 'x-auth-token': token } })
 ---
 
 ## 📖 API Documentation (Swagger/OpenAPI)
-- **Interactive docs:** [http://localhost:5000/api-docs](http://localhost:5000/api-docs)
+- **Interactive docs:** [https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs)
 - **Standards:** OpenAPI 3.0, RESTful conventions, clear request/response schemas.
 - **How to add docs:**
   - Add JSDoc-style Swagger comments to your route files (see `routes/bio.js`, `routes/users.js`, `routes/songs.js`).

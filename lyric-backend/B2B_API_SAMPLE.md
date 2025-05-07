@@ -14,7 +14,7 @@ B2B API access allows your business systems to interact directly with our platfo
 - Obtain a token by logging in via `/api/login`.
 - Example:
   ```sh
-  curl -X POST -H "Content-Type: application/json" -d '{"email":"admin@email.com","password":"yourpass"}' http://localhost:5000/api/login
+  curl -X POST -H "Content-Type: application/json" -d '{"email":"admin@email.com","password":"yourpass"}' https://popular-mite-shree2604-bfb782a1.koyeb.app/api/login
   # Response: { "authToken": "..." }
   ```
 - Use this token in the `x-auth-token` header for all subsequent requests.
@@ -25,7 +25,7 @@ B2B API access allows your business systems to interact directly with our platfo
 
 ### 1. Get All Users
 ```sh
-curl -H "x-auth-token: <TOKEN>" http://localhost:5000/api/users
+curl -H "x-auth-token: <TOKEN>" https://popular-mite-shree2604-bfb782a1.koyeb.app/api/users
 ```
 **Response:**
 ```json
@@ -37,22 +37,22 @@ curl -H "x-auth-token: <TOKEN>" http://localhost:5000/api/users
 
 ### 2. Register a New User
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"name":"BizUser","email":"biz@email.com","password":"pass"}' http://localhost:5000/api/users
+curl -X POST -H "Content-Type: application/json" -d '{"name":"BizUser","email":"biz@email.com","password":"pass"}' https://popular-mite-shree2604-bfb782a1.koyeb.app/api/users
 ```
 
 ### 3. Submit an Artist Bio
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{"artistId":"abc123","bio":"My new bio"}' http://localhost:5000/api/bio
+curl -X POST -H "Content-Type: application/json" -d '{"artistId":"abc123","bio":"My new bio"}' https://popular-mite-shree2604-bfb782a1.koyeb.app/api/bio
 ```
 
 ### 4. Get All Songs
 ```sh
-curl http://localhost:5000/api/songs
+curl https://popular-mite-shree2604-bfb782a1.koyeb.app/api/songs
 ```
 
 ### 5. Get Song by ID
 ```sh
-curl http://localhost:5000/api/songs/<SONG_ID>
+curl https://popular-mite-shree2604-bfb782a1.koyeb.app/api/songs/<SONG_ID>
 ```
 
 ---
@@ -71,13 +71,13 @@ If something goes wrong, you'll get a clear JSON error:
 1. Request API access and receive your credentials.
 2. Authenticate using `/api/login` to get your token.
 3. Use the token for all subsequent API calls.
-4. Refer to [README_API.md](./README_API.md) and [Swagger UI](http://localhost:5000/api-docs) for full docs and schemas.
+4. Refer to [README_API.md](./README_API.md) and [Swagger UI](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs) for full docs and schemas.
 5. Test with Postman or cURL before integrating into production systems.
 
 ---
 
 ## 📖 Full API Documentation
-- **Swagger UI:** [http://localhost:5000/api-docs](http://localhost:5000/api-docs)
+- **Swagger UI:** [https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs)
 - **README:** [README_API.md](./README_API.md)
 
 ---
@@ -104,4 +104,4 @@ For questions or onboarding, email: your@email.com
 
 Happy integrating!
 
-For more endpoints and details, see the [Swagger UI](http://localhost:5000/api-docs).
+For more endpoints and details, see the [Swagger UI](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs).
