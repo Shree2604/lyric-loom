@@ -12,7 +12,7 @@ const AdminPartnersList = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.get("${process.env.REACT_APP_API_BASE_URL}/api/partners");
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/partners`);
       setPartners(res.data.data || []);
     } catch (err) {
       setError("Failed to fetch partners.");
@@ -28,8 +28,9 @@ const AdminPartnersList = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this partner?")) return;
     setDeletingId(id);
+    setError("");
     try {
-      await axios.delete(`/api/partners/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/partners/${id}`);
       setPartners(partners.filter((p) => p._id !== id));
     } catch (err) {
       setError("Failed to delete partner.");
@@ -56,21 +57,30 @@ const AdminPartnersList = () => {
             </tr>
           </thead>
           <tbody>
-            {partners.map((partner) => (
-              <tr key={partner._id}>
-                <td>{partner.name}</td>
-                <td><code>{partner.apiKey}</code></td>
-                <td>{partner.enabled ? "Enabled" : "Disabled"}</td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(partner._id)}
-                    disabled={deletingId === partner._id}
-                  >
-                    {deletingId === partner._id ? "Deleting..." : "Delete"}
-                  </button>
+            {partners.length === 0 ? (
+              <tr>
+                <td colSpan="4" className="no-data">
+                  No partners found.
                 </td>
               </tr>
-            ))}
+            ) : (
+              partners.map((partner) => (
+                <tr key={partner._id}>
+                  <td>{partner.name}</td>
+                  <td><code>{partner.apiKey}</code></td>
+                  <td>{partner.enabled ? "Enabled" : "Disabled"}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(partner._id)}
+                      disabled={deletingId === partner._id}
+                      className="delete-btn"
+                    >
+                      {deletingId === partner._id ? "Deleting..." : "Delete"}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       )}
