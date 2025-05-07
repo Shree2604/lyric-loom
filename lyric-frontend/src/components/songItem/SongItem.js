@@ -34,7 +34,7 @@ const SongItem = ({ song, onSongUpdate, songs }) => {
         console.log('Full song ID for checking like:', fullSongId);
 
         const response = await axios.get(
-          `process.env.REACT_APP_API_BASE_URL/api/songs/check-like/${fullSongId}`,
+          `${process.env.REACT_APP_API_BASE_URL}/api/songs/check-like/${fullSongId}`,
           {
             headers: {
               "x-auth-token": authToken,
@@ -71,9 +71,9 @@ const SongItem = ({ song, onSongUpdate, songs }) => {
 
   // const handlePlay = (song) => {
   //   console.log(song);
-  //   // console.log(`process.env.REACT_APP_API_BASE_URL/${song.song}`);
+  //   // console.log(`${process.env.REACT_APP_API_BASE_URL}/${song.song}`);
   //   navigate("/player", {
-  //     state: { songUrl: `process.env.REACT_APP_API_BASE_URL/${song.song}` },
+  //     state: { songUrl: `${process.env.REACT_APP_API_BASE_URL}/${song.song}` },
   //   });
   // };
 
@@ -89,7 +89,7 @@ const SongItem = ({ song, onSongUpdate, songs }) => {
       });
     } else {
       // fallback: old logic
-      const songUrl = song.song ? `process.env.REACT_APP_API_BASE_URL/${song.song}` : undefined;
+      const songUrl = song.song ? `${process.env.REACT_APP_API_BASE_URL}/${song.song}` : undefined;
       if (!songUrl) {
         console.error("Song URL is undefined!");
         return;
@@ -129,7 +129,7 @@ const SongItem = ({ song, onSongUpdate, songs }) => {
 
       const response = await axios({
         method: 'put',
-        url: `process.env.REACT_APP_API_BASE_URL/api/songs/like/${fullSongId}`,
+        url: `${process.env.REACT_APP_API_BASE_URL}/api/songs/like/${fullSongId}`,
         headers: {
           'x-auth-token': authToken,
           'Content-Type': 'application/json'
@@ -181,9 +181,9 @@ const SongItem = ({ song, onSongUpdate, songs }) => {
     // If img is already a full URL, use as is
     if (img.startsWith('http')) return img;
     // If img starts with '/', treat as relative to backend root
-    if (img.startsWith('/')) return `process.env.REACT_APP_API_BASE_URL${img}`;
+    if (img.startsWith('/')) return `${process.env.REACT_APP_API_BASE_URL}${img}`;
     // Otherwise, treat as backend relative path
-    return `process.env.REACT_APP_API_BASE_URL/${img}`;
+    return `${process.env.REACT_APP_API_BASE_URL}/${img}`;
   };
 
   // const fetchSammaPlaylist = async () => {

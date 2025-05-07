@@ -16,7 +16,7 @@ export default function AdminLogin({ onAdminLogin }) {
     setLoading(true);
 
     try {
-      const response = await axios.post(`process.env.REACT_APP_API_BASE_URL/api/login/`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/login/`, {
         email,
         password,
       });

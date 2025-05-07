@@ -20,7 +20,7 @@ export default function PendingSongs() {
     setLoading(true);
     try {
       const authToken = localStorage.getItem('adminAuthToken');
-      const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs?status=pending`, {
+      const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/songs?status=pending`, {
         headers: { 'x-auth-token': authToken }
       });
       setPendingSongs(data.data);
@@ -36,7 +36,7 @@ export default function PendingSongs() {
   const handleAction = async (id, action, rejectionReason = '') => {
     const authToken = localStorage.getItem('adminAuthToken');
     try {
-      await axios.patch(`process.env.REACT_APP_API_BASE_URL/api/songs/${id}/status`, { status: action, rejectionReason }, {
+      await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/api/songs/${id}/status`, { status: action, rejectionReason }, {
         headers: { 'x-auth-token': authToken }
       });
       fetchPendingSongs();
@@ -53,7 +53,7 @@ export default function PendingSongs() {
     }
     const authToken = localStorage.getItem('adminAuthToken');
     try {
-      await axios.patch(`process.env.REACT_APP_API_BASE_URL/api/songs/bulk-status`, { songIds: selected, status: action, rejectionReason: reason }, {
+      await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/api/songs/bulk-status`, { songIds: selected, status: action, rejectionReason: reason }, {
         headers: { 'x-auth-token': authToken }
       });
       setSelected([]);

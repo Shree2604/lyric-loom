@@ -22,7 +22,7 @@ export default function Widgets() {
     const getAllSongs = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/songs`);
         setSongs(shuffleArray(data.data)); // Shuffle the songs array
         console.log(data.data);
       } catch (error) {

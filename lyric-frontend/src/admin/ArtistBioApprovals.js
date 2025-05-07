@@ -50,7 +50,7 @@ export default function ArtistBioApprovals() {
     const fetchArtistNames = async () => {
       try {
         const authToken = localStorage.getItem('adminAuthToken');
-        const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/users`, {
+        const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
           headers: { 'x-auth-token': authToken }
         });
         const map = {};
