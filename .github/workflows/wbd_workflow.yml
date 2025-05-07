@@ -9,14 +9,10 @@ on:
     branches:
       - main
 
-# Define the job that can run on any runner
+# Define the job that will run on Windows
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: windows-latest
 
     steps:
       # Check out the repository
@@ -45,7 +41,7 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build-artifacts-${{ matrix.os }}
+          name: build-artifacts
           path: |
             ./dist/
             ./coverage/
