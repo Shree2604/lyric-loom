@@ -42,7 +42,7 @@ services:
     depends_on:
       - backend
     networks:
-      - node-network  # Add the network here
+      - node-network  
 
 networks:
   node-network:  # Define the network here
