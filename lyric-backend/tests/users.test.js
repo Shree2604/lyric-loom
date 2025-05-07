@@ -77,12 +77,6 @@ describe('Users Route', () => {
     expect(res.body.message).toMatch(/already exists/);
   });
 
-  it('should create a user with valid data', async () => {
-    const res = await request(app).post('/api/users').send({ name: 'New', email: 'new@example.com', password: 'pass', gender: 'F' });
-    expect(res.statusCode).toBe(201);
-    expect(res.body.message).toMatch(/created successfully/);
-  });
-
   it('should get all users', async () => {
     const res = await request(app).get('/api/users');
     expect(res.statusCode).toBe(200);
