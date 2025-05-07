@@ -80,35 +80,7 @@ router.patch("/bulk-status", async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
-// Create song with file upload (audio + image)
-/**
- * @swagger
- * /api/songs:
- *   post:
- *     summary: Create song with file upload (audio + image)
- *     tags: [Songs]
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               song:
- *                 type: string
- *                 format: binary
- *               img:
- *                 type: string
- *                 format: binary
- *               status:
- *                 type: string
- *                 enum: [pending, approved, rejected]
- *     responses:
- *       201:
- *         description: Song created successfully
- */
+
 router.post(
   "/",
   [upload.fields([{ name: "song" }, { name: "img" }])],
@@ -138,33 +110,7 @@ router.post(
     }
   }
 );
-/**
- * @swagger
- * /api/songs/artist:
- *   post:
- *     summary: Create song as artist (file upload)
- *     tags: [Songs]
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               artist:
- *                 type: string
- *               song:
- *                 type: string
- *                 format: binary
- *               img:
- *                 type: string
- *                 format: binary
- *     responses:
- *       201:
- *         description: Song created successfully
- */
+
 router.post(
   "/artist",
   [upload.fields([{ name: "song" }, { name: "img" }])],
@@ -309,28 +255,7 @@ router.get("/user/liked", async (req, res) => {
   }
 });
 
-// Check if user has liked a song
-/**
- * @swagger
- * /api/songs/check-like/{id}:
- *   get:
- *     summary: Check if the current user has liked a song
- *     tags: [Songs]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: Song ID
- *     responses:
- *       200:
- *         description: Returns isLiked true/false
- *       400:
- *         description: Invalid song ID format
- *       404:
- *         description: Song or user not found
- */
+
 /**
  * @swagger
  * /api/songs/user-liked/{userId}/{songId}:
@@ -384,34 +309,6 @@ router.get("/user-liked/:userId/:songId", async (req, res) => {
 });
 
 
-// Like/Unlike a song
-/**
- * @swagger
- * /api/songs/like/{userId}/{songId}:
- *   put:
- *     summary: Like or unlike a song for a user
- *     tags: [Songs]
- *     parameters:
- *       - in: path
- *         name: userId
- *         schema:
- *           type: string
- *         required: true
- *         description: User ID
- *       - in: path
- *         name: songId
- *         schema:
- *           type: string
- *         required: true
- *         description: Song ID
- *     responses:
- *       200:
- *         description: Song like status updated
- *       400:
- *         description: Invalid user or song ID format
- *       404:
- *         description: Song or user not found
- */
 router.put("/like/:songId", async (req, res) => {
   try {
     const userId = req.user._id;
@@ -765,18 +662,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/**
- * @swagger
- * /api/songs/user/liked:
- *   get:
- *     summary: Get all liked songs for current user
- *     tags: [Songs]
- *     responses:
- *       200:
- *         description: List of liked songs
- *       404:
- *         description: User not found
- */
+
 /**
  * @swagger
  * /api/songs/user/{userId}/liked:
@@ -816,16 +702,7 @@ router.get("/user/:userId/liked", async (req, res) => {
   }
 });
 
-/**
- * @swagger
- * /api/songs/mine:
- *   get:
- *     summary: Get all songs uploaded by the current artist
- *     tags: [Songs]
- *     responses:
- *       200:
- *         description: List of songs uploaded by the artist
- */
+
 router.get("/mine", async (req, res) => {
   console.log('Artist /mine route req.user:', req.user);
   try {
@@ -841,39 +718,14 @@ router.get("/mine", async (req, res) => {
   }
 });
 
-// --- TEST ROUTE: Confirm songs.js is loaded ---
-/**
- * @swagger
- * /api/songs/test:
- *   get:
- *     summary: Test route to confirm songs.js is loaded
- *     tags: [Songs]
- *     responses:
- *       200:
- *         description: Songs route is working
- */
+
 router.get('/test', (req, res) => {
   res.send('Songs route is working');
 });
 
 // --- B2B API: Get all songs for partners (API key protected) ---
 const apiKeyAuth = require('../middleware/apiKeyAuth');
-/**
- * @swagger
- * /api/songs/b2b/all:
- *   get:
- *     summary: Get all songs (B2B API, API key required)
- *     tags: [Songs]
- *     security:
- *       - ApiKeyAuth: []
- *     responses:
- *       200:
- *         description: List of all songs (B2B)
- *       401:
- *         description: Unauthorized
- *       500:
- *         description: Failed to fetch songs
- */
+
 router.get('/b2b/all', apiKeyAuth, async (req, res) => {
   try {
     console.log("B2B ALL route hit"); // Debug log to verify route is hit
