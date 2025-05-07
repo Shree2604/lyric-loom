@@ -13,7 +13,7 @@ export default function ArtistUserData() {
     try {
       setLoading(true);
       const authToken = localStorage.getItem('artistAuthToken');
-      const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/users`, {
+      const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
         headers: {
           'x-auth-token': authToken
         }
