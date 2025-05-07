@@ -14,7 +14,13 @@ require('./swagger')(app);
 
 // Middleware
 mongoose.set("strictQuery", true);
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://lyric-loom-fveq.vercel.app/mainhome',
+    'http://localhost:3000', // (optional) allow local dev frontend too
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 const sendTicketRouter = require("./sendTicket");
