@@ -31,37 +31,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-/**
- * @swagger
- * /api/songs/{id}/status:
- *   patch:
- *     summary: Update song status (approve/reject)
- *     tags: [Songs]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: Song ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               status:
- *                 type: string
- *                 enum: [pending, approved, rejected]
- *               rejectionReason:
- *                 type: string
- *     responses:
- *       200:
- *         description: Song status updated
- *       404:
- *         description: Song not found
- */
+
 // Update song status (approve/reject)
 router.patch("/:id/status", [auth, admin], async (req, res) => {
   try {
@@ -86,32 +56,7 @@ router.patch("/:id/status", [auth, admin], async (req, res) => {
   }
 });
 
-/**
- * @swagger
- * /api/songs/bulk-status:
- *   patch:
- *     summary: Bulk approve/reject songs
- *     tags: [Songs]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               songIds:
- *                 type: array
- *                 items:
- *                   type: string
- *               status:
- *                 type: string
- *                 enum: [pending, approved, rejected]
- *               rejectionReason:
- *                 type: string
- *     responses:
- *       200:
- *         description: Bulk status update complete
- */
+
 // Bulk approve/reject songs
 router.patch("/bulk-status", [auth, admin], async (req, res) => {
   try {
