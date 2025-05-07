@@ -5,33 +5,47 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
-
-# Define the job that will run on Ubuntu
+# Define the job that can run on any runner
 jobs:
   build:
-    
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v2
-    
-    # Set up Node.js for a Node-based project, you can adjust as per your needs (for example, use Flutter for a Flutter project)
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'  # Specify the version of Node.js you want to use
+      # Check out the repository
+      - name: Check out the repository
+        uses: actions/checkout@v3
 
-    # Install dependencies
-    - name: Install dependencies
-      run: npm install
-    
-    # Run the tests
-    - name: Run tests
-      run: jest --coverage
+      # Set up Node.js for a Node-based project
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-    # Build the project (you can replace this with Flutter or another build command)
-    - name: Build project
-      run: node Server.js
-    
+      # Run tests with coverage
+      - name: Run tests
+        run: npx jest --coverage
 
+      # Build the project
+      - name: Build project
+        run: node Server.js
+
+      # Archive build artifacts (optional)
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts-${{ matrix.os }}
+          path: |
+            ./dist/
+            ./coverage/
