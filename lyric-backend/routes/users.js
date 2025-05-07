@@ -12,33 +12,7 @@ const admin = require('../middleware/admin')
 const validateObjectId = require('../middleware/validateObjectId')
 const auth = require('../middleware/auth')
 
-/**
- * @swagger
- * /users:
- *   post:
- *     summary: Register a new user
- *     tags: [Users]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               gender:
- *                 type: string
- *               isArtist:
- *                 type: boolean
- *     responses:
- *       201:
- *         description: User registered
- */
+
 /**
  * @swagger
  * /api/users:
@@ -216,13 +190,13 @@ router.get("/", async (req, res) => {
 
 
 // get user by id
-router.get("/:id", [validateObjectId, auth], async (req, res) => {
+router.get("/:id", [validateObjectId], async (req, res) => {
 	const user = await User.findById(req.params.id).select("-password -__v");
 	res.status(200).send({ data: user });
 });
 
 // update user by id
-router.put("/:id", [validateObjectId, auth], async (req, res) => {
+router.put("/:id", [validateObjectId], async (req, res) => {
 	const user = await User.findByIdAndUpdate(
 		req.params.id,
 		{ $set: req.body },
@@ -232,7 +206,7 @@ router.put("/:id", [validateObjectId, auth], async (req, res) => {
 });
 
 // delete user by id
-router.delete("/:id", [validateObjectId, admin], async (req, res) => {
+router.delete("/:id", [validateObjectId], async (req, res) => {
 	await User.findByIdAndDelete(req.params.id);
 	res.status(200).send({ message: "Successfully deleted user." });
 });
