@@ -33,7 +33,7 @@
         return;
       }
       try {
-        const res = await fetch('http://localhost:5000/api/songs/b2b/all', {
+        const res = await fetch('https://lyric-loom-chi.vercel.app/api/songs/b2b/all', {
           headers: { 'x-api-key': apiKey }
         });
         if (!res.ok) {
