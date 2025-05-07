@@ -12,7 +12,7 @@ const AdminPartnersList = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.get("/api/partners");
+      const res = await axios.get("${process.env.REACT_APP_API_BASE_URL}/api/partners");
       setPartners(res.data.data || []);
     } catch (err) {
       setError("Failed to fetch partners.");
