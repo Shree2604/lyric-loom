@@ -76,7 +76,7 @@ export default function Player() {
     const getAllSongs = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`${config.lyric}/api/songs`);
+        const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs`);
         setGetAllSongs(data.data);
         console.log(data.data);
       } catch (error) {
@@ -128,7 +128,7 @@ export default function Player() {
           // Defensive: ensure song property is a valid URL
           const localSongs = songs.map(song => {
             if (song.song && !song.song.startsWith('http')) {
-              return { ...song, song: `${config.lyric}/${song.song}` };
+              return { ...song, song: `process.env.REACT_APP_API_BASE_URL/${song.song}` };
             }
             return song;
           });
@@ -180,7 +180,7 @@ useEffect(() => {
       if (token) {
         try {
           const response = await axios.get(
-            `${config.lyric}/api/playlists/${location.state.id}`,
+            `process.env.REACT_APP_API_BASE_URL/api/playlists/${location.state.id}`,
             {
               headers: {
                 "x-auth-token": token,

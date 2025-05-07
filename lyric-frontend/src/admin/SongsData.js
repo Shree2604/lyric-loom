@@ -24,7 +24,7 @@ export default function SongsData() {
   const getAllSongs = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${config.lyric}/api/songs`);
+      const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs`);
   
       setSongs(data.data);
     } catch (error) {
@@ -47,7 +47,7 @@ export default function SongsData() {
     try {
       setLoading(true);
       const authToken = localStorage.getItem("adminAuthToken");
-      await axios.delete(`${config.lyric}/api/songs/${id}`, {
+      await axios.delete(`process.env.REACT_APP_API_BASE_URL/api/songs/${id}`, {
         headers: {
           "x-auth-token": authToken,
         },

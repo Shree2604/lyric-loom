@@ -23,7 +23,7 @@ export default function ArtistRejectedPopup() {
         const acknowledgedKey = `artistRejectedAcknowledged_${artistId}`;
         console.log('DEBUG: Artist ID:', artistId);
         console.log('DEBUG: LocalStorage Key:', acknowledgedKey);
-        const { data } = await axios.get(`${config.lyric}/api/songs/mine`, {
+        const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs/mine`, {
           headers: { 'x-auth-token': authToken }
         });
         const rejected = data.data.filter(song => song.status === 'rejected');

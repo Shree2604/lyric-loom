@@ -45,7 +45,7 @@ export default function Favorites() {
         return;
       }
 
-      const response = await axios.get(`${config.lyric}/api/songs/user/liked`, {
+      const response = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs/user/liked`, {
         headers: {
           "x-auth-token": authToken,
         },
@@ -81,7 +81,7 @@ export default function Favorites() {
       }
       // Extract song IDs
       const songIds = likedSongs.map(song => song._id);
-      const response = await axios.post(`${config.lyric}/api/shared-favorites`, { songs: songIds });
+      const response = await axios.post(`process.env.REACT_APP_API_BASE_URL/api/shared-favorites`, { songs: songIds });
       if (response.data && response.data.shareId) {
         const url = `${window.location.origin}/favorites/shared/${response.data.shareId}`;
         setShareLink(url);

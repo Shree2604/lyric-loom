@@ -20,7 +20,7 @@ const EditSongForm = ({ song, onClose }) => {
     e.preventDefault();
     try {
       const authToken = localStorage.getItem('adminAuthToken');
-      const url = `${config.lyric}/api/songs/${song._id}`;
+      const url = `process.env.REACT_APP_API_BASE_URL/api/songs/${song._id}`;
       const { data: res } = await axios.put(url, editedData, {
         headers: {
           'x-auth-token': authToken,

@@ -16,7 +16,7 @@ require('./swagger')(app);
 mongoose.set("strictQuery", true);
 app.use(cors({
   origin: [
-    'https://lyric-loom-fveq.vercel.app/mainhome',
+    'https://lyric-loom-fveq.vercel.app',
     'http://localhost:3000', // (optional) allow local dev frontend too
   ],
   credentials: true

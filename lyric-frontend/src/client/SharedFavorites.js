@@ -15,7 +15,7 @@ export default function SharedFavorites() {
     const fetchSharedFavorites = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${config.lyric}/api/shared-favorites/${shareId}`);
+        const response = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/shared-favorites/${shareId}`);
         if (response.data && response.data.songs) {
           setSongs(response.data.songs);
           setError("");

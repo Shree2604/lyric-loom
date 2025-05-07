@@ -70,7 +70,7 @@ export default function ArtistHome() {
     const fetchRejectedSongs = async () => {
       try {
         const authToken = localStorage.getItem('artistAuthToken');
-        const { data } = await axios.get(`${config.lyric}/api/songs/mine`, {
+        const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs/mine`, {
           headers: { 'x-auth-token': authToken }
         });
         const rejected = data.data.filter(song => song.status === 'rejected');

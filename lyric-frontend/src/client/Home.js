@@ -22,7 +22,7 @@ export default function Home() {
   const getAllSongs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${config.lyric}/api/songs?status=approved`);
+      const response = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs?status=approved`);
       console.log('Raw API response:', response);
       
       if (!response.data || !response.data.data) {
@@ -52,9 +52,9 @@ export default function Home() {
 const songsWithFullUrl = validSongs.map(song => {
   let img = song.img || song.cover || song.image || "/frontendapp/samaa/public/default_image_url.png";
   if (img && !img.startsWith('http') && !img.startsWith('/')) {
-    img = `${config.lyric}/${img}`;
+    img = `process.env.REACT_APP_API_BASE_URL/${img}`;
   }
-  let songUrl = song.song && !song.song.startsWith('http') ? `${config.lyric}/${song.song}` : song.song;
+  let songUrl = song.song && !song.song.startsWith('http') ? `process.env.REACT_APP_API_BASE_URL/${song.song}` : song.song;
   return { ...song, song: songUrl, img };
 });
 setSongs(songsWithFullUrl);

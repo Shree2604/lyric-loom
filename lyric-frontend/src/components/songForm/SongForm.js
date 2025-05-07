@@ -29,7 +29,7 @@ const SongForm = ({ onClose }) => {
 
     try {
       const authToken = localStorage.getItem("artistAuthToken") || localStorage.getItem("adminAuthToken");
-      const url = `${config.lyric}/api/songs`;
+      const url = `process.env.REACT_APP_API_BASE_URL/api/songs`;
 
       // Create FormData for file uploads
       const formData = new FormData();
@@ -55,7 +55,7 @@ const SongForm = ({ onClose }) => {
       console.log("Sending other request");
       
       const authToken = localStorage.getItem("adminAuthToken");
-      const url2 = `${config.lyric}/api/songs/artist`;
+      const url2 = `process.env.REACT_APP_API_BASE_URL/api/songs/artist`;
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("artist", data.artist);

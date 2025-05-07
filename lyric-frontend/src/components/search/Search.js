@@ -25,7 +25,7 @@ export default function Search({ authToken }) {
         return;
       }
 
-      const response = await axios.get(`${config.lyric}/api/search`, {
+      const response = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/search`, {
         params: { search: searchQuery },
         headers: { 'x-auth-token': authToken },
       });

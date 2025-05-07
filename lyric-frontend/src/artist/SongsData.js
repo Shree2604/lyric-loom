@@ -24,7 +24,7 @@ export default function SongsData() {
   const getAllSongs = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${config.lyric}/api/songs`);
+      const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/songs`);
       console.log(data);
       
       setSongs(data.data);

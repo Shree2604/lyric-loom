@@ -15,7 +15,7 @@ export default function UsersData() {
     try {
       setLoading(true);
       const authToken = localStorage.getItem('adminAuthToken');
-      const { data } = await axios.get(`${config.lyric}/api/users`, {
+      const { data } = await axios.get(`process.env.REACT_APP_API_BASE_URL/api/users`, {
         headers: {
           'x-auth-token': authToken
         }
@@ -37,7 +37,7 @@ export default function UsersData() {
     try {
       setLoading(true);
       const authToken = localStorage.getItem('adminAuthToken');
-      await axios.delete(`${config.lyric}/api/users/${id}`, {
+      await axios.delete(`process.env.REACT_APP_API_BASE_URL/api/users/${id}`, {
         headers: {
           'x-auth-token': authToken
         }
