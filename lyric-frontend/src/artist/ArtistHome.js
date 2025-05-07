@@ -149,9 +149,6 @@ export default function ArtistHome() {
         <Typography variant='body1' color='white' marginY={2}>
           Whether you're here to upload your latest creation or explore the songs of other artists, we have everything you need to grow your musical career.
         </Typography>
-        <Button variant="contained" color="secondary" style={{marginTop: 24}} onClick={() => setShowRequests(r => !r)}>
-          {showRequests ? 'Hide' : 'Show'} Connection Requests
-        </Button>
       </Box>
       </div>
     </>
