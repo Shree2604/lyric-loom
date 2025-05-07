@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Collab.css";
 
-// Fetch approved news for all artists
+
 const fetchApprovedNews = async () => {
   const all = JSON.parse(localStorage.getItem("allArtistNews")) || [];
   return all.filter(n => n.status === "approved");
