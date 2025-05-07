@@ -1,0 +1,62 @@
+/* AdminPartnersList.css - Clean, modern table for API keys */
+.admin-partners-list-container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+.admin-partners-list-container h2 {
+  text-align: center;
+  color: #2d3a4b;
+  margin-bottom: 1.5rem;
+}
+.admin-partners-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+.admin-partners-table th, .admin-partners-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.admin-partners-table th {
+  background: #f1f5f9;
+  color: #374151;
+  font-weight: 600;
+}
+.admin-partners-table tr:last-child td {
+  border-bottom: none;
+}
+.admin-partners-table td code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.98em;
+}
+.admin-partners-table button {
+  background: linear-gradient(90deg,#f43f5e,#f59e42);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admin-partners-table button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+.error-message {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 1.2rem;
+  text-align: center;
+}

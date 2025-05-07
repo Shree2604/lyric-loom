@@ -1,0 +1,37 @@
+name: CI/CD Workflow
+
+# Trigger the workflow on push or pull request events to the main branch
+on:
+  push:
+    branches:
+      - main
+
+
+# Define the job that will run on Ubuntu
+jobs:
+  build:
+    
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+    
+    # Set up Node.js for a Node-based project, you can adjust as per your needs (for example, use Flutter for a Flutter project)
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'  # Specify the version of Node.js you want to use
+
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
+    
+    # Run the tests
+    - name: Run tests
+      run: jest --coverage
+
+
+    # Build the project (you can replace this with Flutter or another build command)
+    - name: Build project
+      run: node Server.js
+    
+

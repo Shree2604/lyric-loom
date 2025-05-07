@@ -1,0 +1,96 @@
+.admin-home-container {
+  
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in;
+   
+}
+  
+  
+  .welcome-section {
+    background-color: #d45ddf;
+    color:#fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: bounceIn 1.5s ease-out;
+  }
+  
+  .animated-text {
+    font-family: 'Poppins', sans-serif;
+    animation: slideIn 1.2s ease-in-out;
+  }
+  
+  .animated-button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    opacity: 0.6;
+    cursor: default;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .animated-button:hover {
+    background-color: #000d16;
+    opacity: 0.7;
+  }
+  
+  .feature-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 12px;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .bounce-effect {
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

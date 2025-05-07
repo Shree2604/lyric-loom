@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clear": "cls",
+    "test": "jest --coverage",
+    "test:html": "jest --coverage --reporters=default --reporters=jest-html-reporter",
+    "server": "nodemon Server.js",
+    "ops-dev": "nodemon --exec \"npm run clear && node server.js\""
+  },
+  "keywords": [],
+  "author": "Druva",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.4.2",
+    "joi-password-complexity": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "jspdf": "^3.0.1",
+    "moment-timezone": "^0.5.45",
+    "mongoose": "^6.13.8",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "pdfkit": "^0.17.0",
+    "qrcode.react": "^4.2.0",
+    "redis": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-html-reporter": "^4.1.0",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.1.0"
+  }
+}

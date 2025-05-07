@@ -1,0 +1,73 @@
+.left-player-body {
+  width: 75%;
+  margin-right: 2%;
+  height: 100%;
+}
+
+.right-player-body {
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(212, 68, 203, 0.15);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.queue-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(212, 68, 203, 0.7) 0%, rgba(165, 43, 175, 0.7) 100%);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.queue-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.queue-count {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.queue-loading, .queue-error, .queue-empty {
+  text-align: center;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.songCard-body {
+  width: 100%;
+  height: 62%;
+  background-color: #27354d;
+  border-radius: 30px;
+  border-bottom-right-radius: 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

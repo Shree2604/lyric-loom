@@ -1,0 +1,39 @@
+.main-body{
+    height: 100vh;
+    width: 100vw;
+    background-image: repeating-radial-gradient(
+      circle at center left,
+      transparent 0,
+      #9e0bae 100px
+    ),
+    repeating-linear-gradient(#ea81d655, #d757e8);
+    overflow-y: auto;
+    border-radius: 30px;
+    display: flex;
+}
+
+.background-navbar, .artist-navbar, .artist-sidebar, .sidebar-artist-container {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%) !important;
+}
+
+.artist-navbar, .artist-sidebar, .sidebar-artist-container {
+  box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+}
+
+.artist-navbar .logo-img, .sidebar-artist-container .artist-logo-img {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+.artist-navbar, .artist-sidebar, .sidebar-artist-container, .sidebar-container {
+  color: #fff;
+}
+
+.artist-navbar .sidebar-btn, .sidebar-artist-container .artist-sidebar-btn {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+.artist-navbar .sidebar-btn:hover, .sidebar-artist-container .artist-sidebar-btn:hover {
+  background: #fff;
+  color: #232526;
+}

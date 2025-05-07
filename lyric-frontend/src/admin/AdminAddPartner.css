@@ -1,0 +1,74 @@
+/* AdminAddPartner.css - Modern, clean styling */
+.admin-add-partner-container {
+  max-width: 650px;
+  min-width: 350px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.8rem 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.admin-add-partner-container h2 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.admin-add-partner-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.admin-add-partner-container label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.1rem;
+}
+.admin-add-partner-container input[type="text"] {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+.admin-add-partner-container button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.admin-add-partner-container button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+.success-message {
+  background: #e0fbe0;
+  color: #15803d;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.7rem;
+  text-align: center;
+}
+.error-message, .admin-add-partner-container .error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.7rem;
+  text-align: center;
+}
+code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.97em;
+}

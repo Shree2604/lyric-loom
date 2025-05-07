@@ -1,0 +1,52 @@
+services:
+  backend:
+    build: 
+      context: ./lyric-backend
+      dockerfile: Dockerfile
+    image: backend-service
+    container_name: backend-service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./lyric-backend:/src
+    env_file:
+      - ./lyric-backend/.env
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=development
+    networks:
+      - node-network  # Add the network here
+
+  mongo:
+    image: mongo:4.4
+    volumes:
+      - data-volume:/data/db  # Using the volume "data-volume"
+    ports:
+      - "27018:27017"
+    networks:
+      - node-network  # Add the network here
+
+  frontend:
+    build: 
+      context: ./lyric-frontend
+      dockerfile: Dockerfile
+    image: frontend-service
+    container_name: frontend-service
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./lyric-frontend:/src
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - node-network  # Add the network here
+
+networks:
+  node-network:  # Define the network here
+    driver: bridge  # You can use the default "bridge" driver or customize it
+
+volumes:
+  data-volume:  # Define the volume here
