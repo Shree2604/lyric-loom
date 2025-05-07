@@ -69,42 +69,7 @@ const auth = require('../middleware/auth')
  *       404:
  *         description: User not found
  */
-/**
- * @swagger
- * /api/users/{id}:
- *   patch:
- *     summary: Update user by ID
- *     tags: [Users]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: User ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               gender:
- *                 type: string
- *               isArtist:
- *                 type: boolean
- *     responses:
- *       200:
- *         description: User updated
- *       404:
- *         description: User not found
- */
+
 /**
  * @swagger
  * /api/users/{id}:
