@@ -17,7 +17,7 @@ export default function NewAudioPlayer({ currentIndex, setCurrentIndex, total, i
   const isReady = useRef(false);
 
   const location = useLocation();
-  const songUrl = location.state?.songUrl || `http://localhost:5000/${location.state?.song}`;
+  const songUrl = location.state?.songUrl || `${process.env.REACT_APP_API_BASE_URL}/${location.state?.song}`;
 
   useEffect(() => {
     const setAudioSource = () => {
