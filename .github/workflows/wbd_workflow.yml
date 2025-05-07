@@ -37,11 +37,3 @@ jobs:
       - name: Build project
         run: node Server.js
 
-      # Archive build artifacts (optional)
-      - name: Archive build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: |
-            ./dist/
-            ./coverage/
