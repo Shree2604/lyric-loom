@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>B2B API Test - Fetch Songs</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9fafb; padding: 2rem; }
+    #container { max-width: 600px; margin: 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem; }
+    h2 { text-align: center; color: #2d3a4b; }
+    label { font-weight: 500; }
+    input[type=text] { width: 100%; padding: 0.6rem; margin: 0.5rem 0 1rem 0; border-radius: 6px; border: 1px solid #cbd5e1; }
+    button { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 0.7rem 1.5rem; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    pre { background: #f1f5f9; padding: 1rem; border-radius: 6px; margin-top: 1rem; overflow-x: auto; }
+    .error { color: #b91c1c; background: #fee2e2; border-radius: 6px; padding: 0.7rem 1rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>B2B API Test: Fetch Songs</h2>
+    <label for="apikey">API Key:</label>
+    <input type="text" id="apikey" placeholder="Enter your API key here" value="">
+    <button onclick="fetchSongs()">Fetch Songs</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    async function fetchSongs() {
+      const apiKey = document.getElementById('apikey').value.trim();
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';
+      if (!apiKey) {
+        resultDiv.innerHTML = '<div class="error">Please enter an API key.</div>';
+        return;
+      }
+      try {
+        const res = await fetch('http://localhost:5000/api/songs/b2b/all', {
+          headers: { 'x-api-key': apiKey }
+        });
+        if (!res.ok) {
+          const err = await res.text();
+          resultDiv.innerHTML = `<div class="error">Error: ${res.status} - ${err}</div>`;
+          return;
+        }
+        const data = await res.json();
+        resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (e) {
+        resultDiv.innerHTML = `<div class="error">Request failed: ${e.message}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>

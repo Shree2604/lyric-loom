@@ -1,0 +1,529 @@
+body, html {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #09090b;
+}
+
+.concerts-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(0deg, rgba(30,42,62,1) 0%, rgba(54,69,98,0.10) 100%);
+  -webkit-backdrop-filter: blur(12.5px);
+  backdrop-filter: blur(12.5px);
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.sign {
+  text-align: center;
+  font-family: 'Clip', monospace;
+  font-size: 3em;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd, -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd, 0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.concert-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 0 auto 40px auto;
+  max-width: 1600px;
+}
+
+.concert-card {
+  width: 350px;
+  min-height: 540px;
+  margin: 0;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 1s;
+  position: relative;
+}
+
+.concert-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.concert-card h3 {
+  margin: 18px 0 8px 0;
+  padding: 0 18px;
+  color: #b8005a;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.concert-card p {
+  padding: 0 18px;
+  margin: 0 0 10px 0;
+  color: #232526;
+  font-size: 1.1em;
+}
+
+.ticket-booking {
+  padding: 18px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.concert-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.dropdown-btn {
+  background: #b702fe;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background 0.3s;
+}
+.dropdown-btn:hover {
+  background: #02b7fe;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 16px;
+  z-index: 10;
+  border-radius: 12px;
+  top: 46px;
+  left: 0;
+}
+
+.concert-dropdown.open .dropdown-content {
+  display: block;
+}
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ticket-count {
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #b8005a;
+  font-size: 1.1em;
+  margin-left: 8px;
+}
+
+.book-now {
+  background: #b702fe;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.3s;
+}
+.book-now:hover {
+  background: #02b7fe;
+}
+
+.total-cost {
+  font-weight: bold;
+  color: #b8005a;
+}
+
+/* Responsive, flexible, 4:5 ratio ticket modal */
+.ticket-details-modal {
+  aspect-ratio: 4 / 5;
+  width: 90vw;
+  max-width: 420px;
+  min-width: 260px;
+  max-height: 92vh;
+  background: linear-gradient(120deg, #fff 90%, #ffe6ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(58,28,113,0.20);
+  padding: 24px 18px 18px 18px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-y: auto;
+  position: relative;
+}
+
+.ticket-details-header {
+  text-align: center;
+  color: #b8005a;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.ticket-details-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ticket-details-col {
+  font-size: 1.08em;
+  color: #232526;
+  background: rgba(186,0,90,0.03);
+}
+
+.locked-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(0deg, rgba(30,42,62,1) 0%, rgba(54,69,98,0.10) 100%);
+  padding: 20px;
+}
+
+.locked-content {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.locked-content h2 {
+  color: #b8005a;
+  margin-bottom: 20px;
+}
+
+.locked-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.locked-content input {
+  padding: 10px;
+  border: 1px solid #b8005a;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.locked-content button {
+  background: #b702fe;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.locked-content button:hover {
+  background: #02b7fe;
+}
+
+.locked-content button.back-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #b8005a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.locked-content button.back-button:hover {
+  background-color: #8f0046;
+}
+
+.locked-content .hint-text {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(184, 0, 90, 0.1);
+  border-left: 4px solid #b8005a;
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+}
+
+.back-button {
+  margin-top: 15px;
+  background-color: #02b7fe !important;
+}
+.ticket-details-col p {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.ticket-qr-canvas {
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+
+.ticket-modal-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.ticket-modal-btns button {
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.08em;
+  padding: 10px 0;
+  letter-spacing: 0.5px;
+}
+
+.concert-info-btn {
+  margin-top: 10px;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.concert-info-btn:hover {
+  background: #2a6edb;
+}
+
+.concert-info-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.concert-info-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px 24px 24px;
+  max-width: 400px;
+  width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  position: relative;
+  text-align: center;
+}
+.concert-info-img {
+  width: 100%;
+  max-width: 320px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #222;
+}
+.concert-info-modal p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+.concert-info-modal h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+/* Ticket Payment Modal Styling */
+.modal.fade-in {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInModal 0.3s;
+}
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.card.card-custom {
+  background: #fff;
+  border-radius: 14px;
+  min-width: 340px;
+  max-width: 430px;
+  width: 95vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  overflow: hidden;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.card-header.bg-primary-custom {
+  background: linear-gradient(90deg,#4f8cff,#b8005a);
+  color: #fff;
+  padding: 20px 0 10px 0;
+  text-align: center;
+}
+.text-white-custom {
+  color: #fff;
+}
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+.card-body {
+  padding: 24px 20px 20px 20px;
+}
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+.form-control {
+  width: 100%;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 9px 12px;
+  font-size: 1rem;
+  margin-top: 2px;
+  transition: border 0.2s;
+}
+.form-control:focus {
+  border: 1.5px solid #4f8cff;
+  outline: none;
+}
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+.form-group.col-md-6 { flex: 2; }
+.form-group.col-md-3 { flex: 1; }
+.btn.btn-primary {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2px;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.11);
+  transition: background 0.2s;
+}
+.btn.btn-primary:hover {
+  background: #2a6edb;
+}
+.btn.btn-secondary {
+  background: #eee;
+  color: #444;
+  border: none;
+  padding: 9px 0;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 2px;
+  transition: background 0.2s;
+}
+.btn.btn-secondary:hover {
+  background: #ddd;
+}
+.spinner-border {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4f8cff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@media (max-width: 600px) {
+  .card.card-custom {
+    min-width: 98vw;
+    max-width: 98vw;
+    padding: 0;
+  }
+  .card-body {
+    padding: 16px 6px 14px 6px;
+  }
+  .modal.fade-in {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ticket-details-modal {
+    max-width: 98vw;
+    min-width: 0;
+    padding: 8px 2px 12px 2px;
+    border-radius: 10px;
+  }
+  .ticket-details-header {
+    font-size: 1.2em;
+  }
+  .ticket-details-col {
+    font-size: 0.97em;
+    padding: 7px 5px;
+  }
+  .ticket-modal-btns button {
+    font-size: 0.98em;
+    padding: 8px 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

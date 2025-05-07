@@ -1,0 +1,112 @@
+.artist-news-form-bg {
+  min-height: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #f7fafd;
+}
+
+.artist-news-form-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px #eee;
+  padding: 12px 12px 8px 12px;
+  max-width: 320px;
+  width: 98vw;
+}
+
+.artist-news-form-container h2 {
+  font-size: 1.1rem;
+  color: #4f8cff;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.artist-news-form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+
+.artist-news-form-container input[type="text"],
+.artist-news-form-container textarea {
+  padding: 5px 7px;
+  border: 1px solid #d3e3fd;
+  border-radius: 5px;
+  font-size: 0.98rem;
+}
+
+.artist-news-form-container textarea {
+  min-height: 38px;
+  max-height: 60px;
+  resize: vertical;
+}
+
+.artist-news-form-container input[type="text"]:focus,
+.artist-news-form-container textarea:focus {
+  border: 1px solid #4f8cff;
+}
+
+.artist-news-form-container button[type="submit"] {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.artist-news-form-container button[type="submit"]:hover {
+  background: linear-gradient(90deg,#2a6edb,#b8005a);
+}
+
+.news-submit-msg {
+  color: #4f8cff;
+  font-size: 0.98rem;
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+.artist-news-form-container h3 {
+  font-size: 1rem;
+  color: #b8005a;
+  font-weight: 500;
+  margin: 7px 0 4px 0;
+}
+
+.artist-news-form-container ul {
+  width: 100%;
+  padding-left: 0;
+  list-style: none;
+}
+
+.artist-news-form-container li {
+  background: #f7eaff;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 5px 7px 3px 7px;
+  font-size: 0.98rem;
+  color: #3a1c71;
+}
+
+.artist-news-form-container li b {
+  color: #b8005a;
+  font-size: 1rem;
+}
+
+.artist-news-form-container li span {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .artist-news-form-container {
+    padding: 18px 6vw 14px 6vw;
+    max-width: 98vw;
+  }
+}
