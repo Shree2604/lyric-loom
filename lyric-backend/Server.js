@@ -27,7 +27,8 @@ const sendTicketRouter = require("./sendTicket");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const songRoutes = require("./routes/songs");
-const playlistRoutes = require("./routes/playlist");
+// Remove unused routes
+// const playListRoutes = require("./routes/playLists");
 const searchRoutes = require("./routes/search");
 const sharedFavoritesRoutes = require("./routes/sharedFavorites");
 // const bioRoutes = require("./routes/bio");
@@ -41,7 +42,8 @@ app.use(sendTicketRouter);
 app.use("/api/users", userRoutes);
 app.use("/api/login", authRoutes);
 app.use("/api/songs", songRoutes);
-app.use("/api/playlists", playlistRoutes);
+// Remove unused route mounting
+// app.use("/api/playlists", playListRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/shared-favorites", sharedFavoritesRoutes);
 // app.use("/api/bio", bioRoutes);
