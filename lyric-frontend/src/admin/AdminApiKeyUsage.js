@@ -26,7 +26,7 @@ const AdminApiKeyUsage = () => {
     setError("");
     setUsage([]);
     try {
-      const res = await axios.get(`/api/partners/usage/${partnerId}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/partners/usage/${partnerId}`);
       setUsage(res.data.data || []);
     } catch (err) {
       console.error("Error fetching usage:", err);
