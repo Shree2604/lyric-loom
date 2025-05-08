@@ -19,7 +19,7 @@ export default function FavouritesPage() {
         }
 
         const response = await axios.get(
-          `process.env.REACT_APP_API_BASE_URL/api/songs/liked`, 
+          `${process.env.REACT_APP_API_BASE_URL}/api/songs/liked`, 
           {
             headers: {
               "x-auth-token": authToken,
