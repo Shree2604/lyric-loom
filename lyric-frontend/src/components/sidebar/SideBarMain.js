@@ -34,9 +34,9 @@ export default function SideBarMain() {
         <SideBarButton title="Artist Login" to="/artistlogin" icon={<AiOutlineLogin />} />
         <SideBarButton title="Admin Login" to="/adminlogin" icon={<AiOutlineLogin />} />
       </div>
-      <div className="sidebar-bottom-btn">
-        <SideBarButton title="Developers" to="/developers" icon={<FaUsers />} />
-      </div>
+      // <div className="sidebar-bottom-btn">
+      //   <SideBarButton title="Developers" to="/developers" icon={<FaUsers />} />
+      // </div>
     </div>
   )
 }
