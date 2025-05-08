@@ -238,7 +238,7 @@ router.get("/mine", async (req, res) => {
 });
 
 // Get all liked songs for the currently authenticated user
-router.get("/user/liked", async (req, res) => {
+router.get("/user/liked", auth ,async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId);
