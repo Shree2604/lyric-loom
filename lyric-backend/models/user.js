@@ -18,12 +18,12 @@ const userSchema = new mongoose.Schema({
 	verified: { type: Boolean, default: false },
 });
 
-//userSchema.index({ email: 1 }); // For fast user lookup by email
-//userSchema.index({ name: 1 }); // For user search by name
-//userSchema.index({ isArtist: 1 }); // For artist filtering
-//userSchema.index({ isArtist: 1, isAdmin: 1, verified: 1 }); // Compound for admin/artist/verified queries
-//userSchema.index({ likedSongs: 1 }); // For finding users by liked song
-//userSchema.index({ createdAt: -1 }); // For sorting/filtering by creation date
+userSchema.index({ email: 1 }); // For fast user lookup by email
+userSchema.index({ name: 1 }); // For user search by name
+userSchema.index({ isArtist: 1 }); // For artist filtering
+userSchema.index({ isArtist: 1, isAdmin: 1, verified: 1 }); // Compound for admin/artist/verified queries
+userSchema.index({ likedSongs: 1 }); // For finding users by liked song
+userSchema.index({ createdAt: -1 }); // For sorting/filtering by creation date
 
 userSchema.methods.generateAuthToken = function () {
 	if (!process.env.JWT_SECRET) {
