@@ -4,7 +4,7 @@ export default function Instructions() {
   return (
     <div className="screen-container">
       <div className="instructions">
-        <h2>Instructions:</h2>
+        <h2>ShreeRaj:</h2>
         <ul>
           <li>
             Adjust your browser dimensions for the best viewing experience.
