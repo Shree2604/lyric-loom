@@ -309,7 +309,7 @@ router.get("/user-liked/:userId/:songId", async (req, res) => {
 });
 
 
-router.put("/like/:songId", async (req, res) => {
+router.put("/like/:songId", auth , async (req, res) => {
   try {
     const userId = req.user._id;
     const { songId } = req.params;
