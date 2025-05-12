@@ -15,8 +15,6 @@ A full-stack music platform developed under the WBD Course by Team 31.
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 
 
@@ -124,7 +122,7 @@ lyric-loom/
 
 
 ## API Documentation
-- **Interactive Swagger UI:** [https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs)
+- **Interactive Swagger UI** 
 - **API Docs:** See `lyric-backend/README_API.md` for endpoint details, authentication, usage samples, and error handling.
 - **B2B Guides:** See `lyric-backend/B2B_API_PARTNER_GUIDE.md` and `lyric-backend/B2B_API_SAMPLE.md`.
 
