@@ -1,0 +1,12 @@
+# Ignore all environment files
+.env
+.env.*
+# Ignore sensitive config files
+*.env.local
+*.env.production
+# Ignore API keys, secrets, and sensitive config
+apikeys.json
+secrets.json
+config/*.json
+# Ignore uploads folder
+uploads/
