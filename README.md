@@ -2,7 +2,7 @@
 
 A full-stack music platform developed under the WBD Course by Team 31.
 
----
+
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -18,12 +18,12 @@ A full-stack music platform developed under the WBD Course by Team 31.
 - [License](#license)
 - [Contact](#contact)
 
----
+
 
 ## Project Overview
 Lyric Loom is a robust music web application designed for both B2C (frontend users) and B2B (external partners) scenarios. It provides a RESTful API for user management, song management, artist bios, and includes advanced features like PDF ticketing and email notifications.
 
----
+
 
 ## Architecture
 - **Frontend:** React (Redux, MUI, TailwindCSS, Chart.js, Axios, etc.)
@@ -31,7 +31,7 @@ Lyric Loom is a robust music web application designed for both B2C (frontend use
 - **Testing:** Jest, Supertest, HTML coverage reports.
 - **Deployment:** Docker Compose, Vercel, Koyeb, or local.
 
----
+
 
 ## Features
 ### User-Facing (B2C)
@@ -51,7 +51,6 @@ Lyric Loom is a robust music web application designed for both B2C (frontend use
 - Admin and artist dashboards.
 - Song uploads, analytics, and profile management.
 
----
 
 ## Directory Structure
 ```
@@ -89,7 +88,7 @@ lyric-loom/
 │   └── ...                 # Build, coverage, etc.
 ```
 
----
+
 
 ## Setup and Installation
 ### Prerequisites
@@ -122,21 +121,21 @@ lyric-loom/
    ```
    - This will start MongoDB, backend, and frontend services.
 
----
+
 
 ## API Documentation
 - **Interactive Swagger UI:** [https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs](https://popular-mite-shree2604-bfb782a1.koyeb.app/api-docs)
 - **API Docs:** See `lyric-backend/README_API.md` for endpoint details, authentication, usage samples, and error handling.
 - **B2B Guides:** See `lyric-backend/B2B_API_PARTNER_GUIDE.md` and `lyric-backend/B2B_API_SAMPLE.md`.
 
----
+
 
 ## B2B Integration
 - **API Key Authentication:** All partner requests require an `x-api-key` header.
 - **Sample Requests:** See `B2B_API_SAMPLE.md` for cURL/Postman examples.
 - **Usage Logging:** All partner requests are logged for security and analytics.
 
----
+
 
 ## Testing
 - **Backend:** Jest and Supertest (see `lyric-backend/tests/`)
@@ -149,34 +148,23 @@ lyric-loom/
   ```
 - **Coverage Reports:** Generated in the `coverage/` directories.
 
----
+
 
 ## Deployment
 - **Docker Compose:** See `docker-compose.yml` for multi-service orchestration.
 - **Vercel/Koyeb:** Backend and frontend can be deployed to cloud platforms.
 - **CI/CD:** GitHub Actions workflows for automated testing and deployment (see `.github/workflows/`).
 
----
+
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests for improvements, bug fixes, or new features.
 
----
-
-## License
-[MIT](LICENSE) (or specify your license here)
-
----
-
-## Contact
-For API access, partnership, or support, please contact: your@email.com
-
----
 
 ## Acknowledgements
 - WBD Course, Team 31
 - Open source libraries: React, Express, MongoDB, MUI, TailwindCSS, Jest, Docker, and more.
 
----
+
 
 **For detailed API usage, error handling, and partner integration, please refer to the files in `lyric-backend/` and the Swagger UI.**
