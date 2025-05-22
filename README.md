@@ -1,6 +1,6 @@
 # Lyric Loom
 
-A full-stack music platform developed under the WBD Course by Team 31.
+A full-stack music platform.
 
 
 
@@ -160,7 +160,6 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 
 
 ## Acknowledgements
-- WBD Course, Team 31
 - Open source libraries: React, Express, MongoDB, MUI, TailwindCSS, Jest, Docker, and more.
 
 
