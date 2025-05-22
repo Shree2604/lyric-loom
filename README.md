@@ -1,6 +1,6 @@
 # Lyric Loom
 
-A full-stack music platform.
+A full-stack music platform developed by IAE Group.
 
 
 
